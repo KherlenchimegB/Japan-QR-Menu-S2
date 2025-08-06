@@ -26,13 +26,11 @@ app.get("/api/test-db", async (req, res) => {
     await connectDB();
     res.json({ success: true, message: "MongoDB холбогдсон" });
   } catch (error) {
-    res
-      .status(500)
-      .json({
-        success: false,
-        message: "MongoDB холболтын алдаа",
-        error: error.message,
-      });
+    res.status(500).json({
+      success: false,
+      message: "MongoDB холболтын алдаа",
+      error: error.message,
+    });
   }
 });
 

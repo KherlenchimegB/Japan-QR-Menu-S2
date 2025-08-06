@@ -64,15 +64,19 @@ export default function AdminPage() {
 
   const fetchMenuItems = async () => {
     try {
-      const response = await fetch("/api/menu");
+      const response = await fetch("http://localhost:8000/api/menu");
       const result = await response.json();
-      console.log("Menu API response:", result); // Debug
-      // API-аас ирж буй өгөгдлийн бүтцийг шалгах
-      const menuItems = result.data || result || [];
-      setMenuItems(Array.isArray(menuItems) ? menuItems : []);
+      console.log("Backend Menu API response:", result);
+
+      if (result.success) {
+        setMenuItems(result.data || []);
+      } else {
+        console.error("Backend Menu API алдаа:", result.message);
+        setMenuItems([]);
+      }
     } catch (error) {
-      console.error("Меню татахад алдаа:", error);
-      setMenuItems([]); // Алдаа гарвал хоосон массив
+      console.error("Backend Menu API холболтын алдаа:", error);
+      setMenuItems([]);
     } finally {
       setLoading(false);
     }
@@ -80,15 +84,19 @@ export default function AdminPage() {
 
   const fetchTables = async () => {
     try {
-      const response = await fetch("/api/tables");
+      const response = await fetch("http://localhost:8000/api/tables");
       const result = await response.json();
-      console.log("Tables API response:", result); // Debug
-      // API-аас ирж буй өгөгдлийн бүтцийг шалгах
-      const tables = result.data || result || [];
-      setTables(Array.isArray(tables) ? tables : []);
+      console.log("Backend Tables API response:", result);
+
+      if (result.success) {
+        setTables(result.data || []);
+      } else {
+        console.error("Backend Tables API алдаа:", result.message);
+        setTables([]);
+      }
     } catch (error) {
-      console.error("Ширээ татахад алдаа:", error);
-      setTables([]); // Алдаа гарвал хоосон массив
+      console.error("Backend Tables API холболтын алдаа:", error);
+      setTables([]);
     }
   };
 
@@ -185,7 +193,7 @@ export default function AdminPage() {
   // Ширээний статус өөрчлөх
   const updateTableStatus = async (tableNumber: number, status: string) => {
     try {
-      const response = await fetch("/api/tables", {
+      const response = await fetch("http://localhost:8000/api/tables", {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",

@@ -41,7 +41,9 @@ function QRMenuContent() {
   useEffect(() => {
     const fetchMenuItems = async () => {
       try {
-        const response = await fetch("/api/menu?available=true");
+        const response = await fetch(
+          "http://localhost:8000/api/menu?available=true"
+        );
         const data = await response.json();
         if (data.success) {
           setMenuItems(data.data);
