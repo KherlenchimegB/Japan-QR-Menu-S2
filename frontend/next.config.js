@@ -1,11 +1,9 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: "export",
-  trailingSlash: true,
+  // Vercel дээр static export хэрэггүй
   images: {
     unoptimized: true,
   },
-  basePath: process.env.NODE_ENV === "production" ? "/Japan-QR-Menu-S2" : "",
 };
 
 module.exports = nextConfig;

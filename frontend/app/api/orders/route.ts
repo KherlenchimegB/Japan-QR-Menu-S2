@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 
-// Static orders data
+// Static orders data (хожим MongoDB-с авах боломжтой)
 let orders: any[] = [];
 let orderCounter = 1;
 
@@ -53,7 +53,4 @@ export async function POST(request: NextRequest) {
       { status: 500 }
     );
   }
-}
-
-// Static export-д тохируулах
-export const dynamic = "force-static";
+} 

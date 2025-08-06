@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 
-// Static menu data
+// Static menu data (хожим MongoDB-с авах боломжтой)
 const menuItems = [
   {
     _id: "1",
@@ -87,7 +87,4 @@ export async function GET(request: NextRequest) {
       { status: 500 }
     );
   }
-}
-
-// Static export-д тохируулах
-export const dynamic = "force-static";
+} 

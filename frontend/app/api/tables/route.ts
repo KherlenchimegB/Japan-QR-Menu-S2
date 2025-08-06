@@ -1,10 +1,12 @@
 import { NextRequest, NextResponse } from "next/server";
 
-// Static tables data
+// Static tables data (хожим MongoDB-с авах боломжтой)
 const tables = Array.from({ length: 20 }, (_, i) => ({
   _id: `table_${i + 1}`,
   tableNumber: i + 1,
-  qrCode: `https://kherlenchimegb.github.io/Japan-QR-Menu-S2?table=${i + 1}`,
+  qrCode: `https://frontend-o9o4iu1uv-kherlenchimegs-projects.vercel.app?table=${
+    i + 1
+  }`,
   status: "available",
   currentOrder: null,
   capacity: 4,
@@ -29,6 +31,3 @@ export async function GET() {
     );
   }
 }
-
-// Static export-д тохируулах
-export const dynamic = "force-static"; 
