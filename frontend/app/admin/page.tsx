@@ -34,6 +34,14 @@ export default function AdminPage() {
     loadData().finally(() => {
       clearTimeout(timeout);
     });
+
+    // Real-time update - 10 секунд тутамд шинэчлэх
+    const interval = setInterval(() => {
+      fetchOrders();
+      fetchTables();
+    }, 10000);
+
+    return () => clearInterval(interval);
   }, []);
 
   const fetchOrders = async () => {
