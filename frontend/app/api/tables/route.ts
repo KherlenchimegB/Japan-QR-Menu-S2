@@ -4,9 +4,7 @@ import { NextRequest, NextResponse } from "next/server";
 const tables = Array.from({ length: 20 }, (_, i) => ({
   _id: `table_${i + 1}`,
   tableNumber: i + 1,
-  qrCode: `https://frontend-o9o4iu1uv-kherlenchimegs-projects.vercel.app?table=${
-    i + 1
-  }`,
+  qrCode: `https://frontend-o9o4iu1uv-kherlenchimegs-projects.vercel.app?table=${i + 1}`,
   status: "available",
   currentOrder: null,
   capacity: 4,
