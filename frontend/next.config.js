@@ -5,7 +5,7 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
-  basePath: process.env.NODE_ENV === "production" ? "/QR-menu" : "",
+  basePath: process.env.NODE_ENV === "production" ? "/Japan-QR-Menu-S2" : "",
 };
 
 module.exports = nextConfig;

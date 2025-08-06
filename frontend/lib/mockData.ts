@@ -124,7 +124,7 @@ export function generateTableQRUrl(tableNumber: number) {
   // GitHub Pages URL (production дээр)
   const baseUrl =
     process.env.NODE_ENV === "production"
-      ? "https://kherlenchimegb.github.io/QR-menu"
+      ? "https://kherlenchimegb.github.io/Japan-QR-Menu-S2"
       : process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000";
   return `${baseUrl}?table=${tableNumber}`;
 }
