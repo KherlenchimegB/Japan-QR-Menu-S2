@@ -1,73 +1,34 @@
-import { NextResponse } from "next/server";
-import {
-  getAllTables,
-  findTable,
-  updateTableStatus,
-  generateQRCode,
-} from "@/lib/mockData";
+import { NextRequest, NextResponse } from "next/server";
 
-// Бүх ширээ авах
+// Static tables data
+const tables = Array.from({ length: 20 }, (_, i) => ({
+  _id: `table_${i + 1}`,
+  tableNumber: i + 1,
+  qrCode: `https://kherlenchimegb.github.io/Japan-QR-Menu-S2?table=${i + 1}`,
+  status: "available",
+  currentOrder: null,
+  capacity: 4,
+  location: `Floor 1 - Table ${i + 1}`,
+  createdAt: new Date().toISOString(),
+  updatedAt: new Date().toISOString(),
+}));
+
 export async function GET() {
   try {
-    const tables = getAllTables();
     return NextResponse.json({
       success: true,
       data: tables,
-      message: "Ширээнүүдийн жагсаалт амжилттай илгээгдлээ",
     });
   } catch (error) {
     return NextResponse.json(
       {
         success: false,
-        message: "Ширээнүүдийн жагсаалт авахад алдаа гарлаа",
+        message: "Ширээ татахад алдаа гарлаа",
       },
       { status: 500 }
     );
   }
 }
 
-// Ширээний статус өөрчлөх
-export async function PATCH(request: Request) {
-  try {
-    const body = await request.json();
-    const { tableNumber, status } = body;
-
-    // Validation
-    if (!tableNumber || !status) {
-      return NextResponse.json(
-        {
-          success: false,
-          message: "Ширээний дугаар болон статус заавал байх ёстой",
-        },
-        { status: 400 }
-      );
-    }
-
-    // Ширээний статус шинэчлэх
-    const updatedTable = updateTableStatus(tableNumber, status);
-
-    if (!updatedTable) {
-      return NextResponse.json(
-        {
-          success: false,
-          message: "Ширээ олдсонгүй",
-        },
-        { status: 404 }
-      );
-    }
-
-    return NextResponse.json({
-      success: true,
-      data: updatedTable,
-      message: "Ширээний статус амжилттай шинэчлэгдлээ",
-    });
-  } catch (error) {
-    return NextResponse.json(
-      {
-        success: false,
-        message: "Ширээний статус шинэчлэхэд алдаа гарлаа",
-      },
-      { status: 500 }
-    );
-  }
-}
+// Static export-д тохируулах
+export const dynamic = "force-static"; 

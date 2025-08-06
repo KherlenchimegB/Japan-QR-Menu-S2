@@ -1,49 +1,34 @@
-import { NextResponse } from "next/server";
-import {
-  mockOrders,
-  orderCounter,
-  addOrder,
-  getAllOrders,
-} from "@/lib/mockData";
+import { NextRequest, NextResponse } from "next/server";
+
+// Static orders data
+let orders: any[] = [];
+let orderCounter = 1;
 
 export async function GET() {
   try {
     return NextResponse.json({
       success: true,
-      data: getAllOrders(),
-      message: "Захиалгын жагсаалт амжилттай илгээгдлээ",
+      data: orders,
     });
   } catch (error) {
     return NextResponse.json(
       {
         success: false,
-        message: "Захиалгын жагсаалт авахад алдаа гарлаа",
+        message: "Захиалга татахад алдаа гарлаа",
       },
       { status: 500 }
     );
   }
 }
 
-export async function POST(request: Request) {
+export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
     const { tableNumber, items, totalAmount } = body;
 
-    // Validation
-    if (!tableNumber || !items || items.length === 0) {
-      return NextResponse.json(
-        {
-          success: false,
-          message: "Захиалгын мэдээлэл дутуу байна",
-        },
-        { status: 400 }
-      );
-    }
-
-    // Шинэ захиалга үүсгэх
     const newOrder = {
       _id: `order_${Date.now()}`,
-      orderNumber: `ORD${String(orderCounter).padStart(4, "0")}`,
+      orderNumber: `ORD-${orderCounter.toString().padStart(4, "0")}`,
       tableNumber,
       items,
       totalAmount,
@@ -52,12 +37,12 @@ export async function POST(request: Request) {
       updatedAt: new Date().toISOString(),
     };
 
-    addOrder(newOrder);
+    orders.push(newOrder);
+    orderCounter++;
 
     return NextResponse.json({
       success: true,
       data: newOrder,
-      message: "Захиалга амжилттай үүсгэгдлээ",
     });
   } catch (error) {
     return NextResponse.json(
@@ -69,3 +54,6 @@ export async function POST(request: Request) {
     );
   }
 }
+
+// Static export-д тохируулах
+export const dynamic = "force-static";
