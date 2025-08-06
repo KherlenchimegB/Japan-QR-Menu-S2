@@ -46,15 +46,19 @@ export default function AdminPage() {
 
   const fetchOrders = async () => {
     try {
-      const response = await fetch("/api/orders");
+      const response = await fetch("http://localhost:8000/api/orders");
       const result = await response.json();
-      console.log("Orders API response:", result); // Debug
-      // API-аас ирж буй өгөгдлийн бүтцийг шалгах
-      const orders = result.data || result || [];
-      setOrders(Array.isArray(orders) ? orders : []);
+      console.log("Backend Orders API response:", result);
+
+      if (result.success) {
+        setOrders(result.data || []);
+      } else {
+        console.error("Backend API алдаа:", result.message);
+        setOrders([]);
+      }
     } catch (error) {
-      console.error("Захиалга татахад алдаа:", error);
-      setOrders([]); // Алдаа гарвал хоосон массив
+      console.error("Backend API холболтын алдаа:", error);
+      setOrders([]);
     }
   };
 
@@ -91,13 +95,16 @@ export default function AdminPage() {
   // Захиалгын статус өөрчлөх
   const updateOrderStatus = async (orderId: string, status: string) => {
     try {
-      const response = await fetch(`/api/orders/${orderId}`, {
-        method: "PATCH",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ status }),
-      });
+      const response = await fetch(
+        `http://localhost:8000/api/orders/${orderId}`,
+        {
+          method: "PATCH",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ status }),
+        }
+      );
 
       if (response.ok) {
         toast({

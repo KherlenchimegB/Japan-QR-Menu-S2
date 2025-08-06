@@ -1,8 +1,32 @@
 import { NextRequest, NextResponse } from "next/server";
 
-// Static orders data (хожим MongoDB-с авах боломжтой)
+// Static orders data (localStorage ашиглах)
 let orders: any[] = [];
 let orderCounter = 1;
+
+// localStorage-с өгөгдөл авах (server-side дээр ажиллахгүй)
+const getOrdersFromStorage = () => {
+  try {
+    if (typeof window !== "undefined") {
+      const stored = localStorage.getItem("qr-menu-orders");
+      return stored ? JSON.parse(stored) : [];
+    }
+  } catch (error) {
+    console.error("localStorage error:", error);
+  }
+  return [];
+};
+
+// localStorage-д өгөгдөл хадгалах
+const saveOrdersToStorage = (orders: any[]) => {
+  try {
+    if (typeof window !== "undefined") {
+      localStorage.setItem("qr-menu-orders", JSON.stringify(orders));
+    }
+  } catch (error) {
+    console.error("localStorage error:", error);
+  }
+};
 
 export async function GET() {
   try {
@@ -53,4 +77,4 @@ export async function POST(request: NextRequest) {
       { status: 500 }
     );
   }
-} 
+}
