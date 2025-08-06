@@ -44,12 +44,12 @@ export interface Order {
 // Table интерфейс
 export interface Table {
   _id: string;
-  number: number;
-  status: "free" | "occupied" | "reserved";
+  tableNumber: number;
+  qrCode: string;
+  status: "available" | "occupied" | "reserved";
+  currentOrder?: string | null;
   capacity: number;
-  location?: string;
-  qrCode?: string;
-  currentOrder?: string;
+  location: string;
   createdAt: string;
   updatedAt: string;
 }

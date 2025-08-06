@@ -7,7 +7,9 @@ import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { useToast } from "@/hooks/use-toast";
-import { Order, MenuItem } from "@/types";
+import { Order, MenuItem, Table } from "@/types";
+import QRCodeComponent from "@/components/QRCode";
+import OrderDetails from "@/components/OrderDetails";
 
 // Админ хэсгийн үндсэн хуудас
 export default function AdminPage() {
@@ -15,12 +17,13 @@ export default function AdminPage() {
   const { toast } = useToast();
   const [orders, setOrders] = useState<Order[]>([]);
   const [menuItems, setMenuItems] = useState<MenuItem[]>([]);
+  const [tables, setTables] = useState<Table[]>([]);
   const [loading, setLoading] = useState(true);
 
   // Захиалгуудыг татах
   useEffect(() => {
     const loadData = async () => {
-      await Promise.all([fetchOrders(), fetchMenuItems()]);
+      await Promise.all([fetchOrders(), fetchMenuItems(), fetchTables()]);
     };
 
     // 5 секундын дараа loading-ийг дуусгах (хэрэв API удаж байвал)
@@ -60,6 +63,20 @@ export default function AdminPage() {
       setMenuItems([]); // Алдаа гарвал хоосон массив
     } finally {
       setLoading(false);
+    }
+  };
+
+  const fetchTables = async () => {
+    try {
+      const response = await fetch("/api/tables");
+      const result = await response.json();
+      console.log("Tables API response:", result); // Debug
+      // API-аас ирж буй өгөгдлийн бүтцийг шалгах
+      const tables = result.data || result || [];
+      setTables(Array.isArray(tables) ? tables : []);
+    } catch (error) {
+      console.error("Ширээ татахад алдаа:", error);
+      setTables([]); // Алдаа гарвал хоосон массив
     }
   };
 
@@ -119,6 +136,61 @@ export default function AdminPage() {
         return t("completed");
       default:
         return status;
+    }
+  };
+
+  // Ширээний статусын өнгө
+  const getTableStatusColor = (status: string) => {
+    switch (status) {
+      case "available":
+        return "bg-green-100 text-green-800";
+      case "occupied":
+        return "bg-red-100 text-red-800";
+      case "reserved":
+        return "bg-yellow-100 text-yellow-800";
+      default:
+        return "bg-gray-100 text-gray-800";
+    }
+  };
+
+  // Ширээний статусын нэр
+  const getTableStatusName = (status: string) => {
+    switch (status) {
+      case "available":
+        return t("available");
+      case "occupied":
+        return t("occupied");
+      case "reserved":
+        return t("reserved");
+      default:
+        return status;
+    }
+  };
+
+  // Ширээний статус өөрчлөх
+  const updateTableStatus = async (tableNumber: number, status: string) => {
+    try {
+      const response = await fetch("/api/tables", {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ tableNumber, status }),
+      });
+
+      if (response.ok) {
+        toast({
+          title: t("success"),
+          description: t("tableStatusUpdated"),
+        });
+        fetchTables(); // Ширээнүүдийг дахин татах
+      }
+    } catch (error) {
+      toast({
+        title: t("error"),
+        description: t("updateFailed"),
+        variant: "destructive",
+      });
     }
   };
 
@@ -319,13 +391,103 @@ export default function AdminPage() {
 
           {/* Ширээнүүд */}
           <TabsContent value="tables" className="mt-6">
-            <Card className="bg-purple-50 border-purple-200">
-              <CardContent className="p-6">
-                <p className="text-center text-gray-600">
-                  {t("tablesComingSoon")}
-                </p>
-              </CardContent>
-            </Card>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+              {tables.length === 0 ? (
+                <Card className="bg-purple-50 border-purple-200 col-span-full">
+                  <CardContent className="p-6 text-center">
+                    <p className="text-gray-600">{t("noTables")}</p>
+                  </CardContent>
+                </Card>
+              ) : (
+                tables.map((table) => (
+                  <Card
+                    key={table._id}
+                    className="bg-purple-50 border-purple-200"
+                  >
+                    <CardHeader className="pb-3">
+                      <div className="flex justify-between items-start">
+                        <CardTitle className="text-lg">
+                          {t("table")} #{table.tableNumber}
+                        </CardTitle>
+                        <Badge className={getTableStatusColor(table.status)}>
+                          {getTableStatusName(table.status)}
+                        </Badge>
+                      </div>
+                      <p className="text-sm text-gray-600">{table.location}</p>
+                      <p className="text-sm text-gray-500">
+                        {t("capacity")}: {table.capacity} {t("people")}
+                      </p>
+                    </CardHeader>
+                    <CardContent className="pt-0">
+                      <div className="space-y-3">
+                        {/* QR код */}
+                        <div className="flex justify-center">
+                          <div
+                            onClick={() => window.open(table.qrCode, "_blank")}
+                            className="cursor-pointer hover:opacity-80 transition-opacity"
+                          >
+                            <QRCodeComponent
+                              value={table.qrCode}
+                              size={120}
+                              className="mb-2"
+                            />
+                          </div>
+                        </div>
+
+                        {/* QR код URL */}
+                        <div className="text-center">
+                          <span className="text-xs text-gray-500">
+                            {t("qrCode")}:
+                          </span>
+                          <div className="font-mono text-xs bg-purple-100 px-2 py-1 rounded mt-1 break-all">
+                            {table.qrCode}
+                          </div>
+                        </div>
+
+                        {table.currentOrder && (
+                          <div className="text-sm text-blue-600 text-center mb-2">
+                            {t("hasOrder")}: #{table.currentOrder}
+                          </div>
+                        )}
+
+                        {/* Захиалгын дэлгэрэнгүй мэдээлэл */}
+                        {table.currentOrder && (
+                          <>
+                            <div className="text-xs text-gray-500 mb-1">
+                              Debug: Order ID = {table.currentOrder}
+                            </div>
+                            <OrderDetails orderId={table.currentOrder} />
+                          </>
+                        )}
+
+                        <div className="flex space-x-2 mt-3">
+                          <Button
+                            size="sm"
+                            variant="outline"
+                            onClick={() =>
+                              updateTableStatus(table.tableNumber, "available")
+                            }
+                            disabled={table.status === "available"}
+                          >
+                            {t("setAvailable")}
+                          </Button>
+                          <Button
+                            size="sm"
+                            variant="outline"
+                            onClick={() =>
+                              updateTableStatus(table.tableNumber, "reserved")
+                            }
+                            disabled={table.status === "reserved"}
+                          >
+                            {t("setReserved")}
+                          </Button>
+                        </div>
+                      </div>
+                    </CardContent>
+                  </Card>
+                ))
+              )}
+            </div>
           </TabsContent>
         </Tabs>
       </div>

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, Suspense } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -24,7 +24,7 @@ import { MenuItem, CartItem } from "@/types";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { useToast } from "@/hooks/use-toast";
 
-export default function QRMenu() {
+function QRMenuContent() {
   const { language, setLanguage, t } = useLanguage();
   const { toast } = useToast();
   const [cart, setCart] = useState<CartItem[]>([]);
@@ -33,6 +33,9 @@ export default function QRMenu() {
   const [loading, setLoading] = useState(true);
   const searchParams = useSearchParams();
   const tableNumber = searchParams.get("table") || "1";
+
+  // QR кодоос ирж буй ширээний дугаар
+  const currentTable = parseInt(tableNumber);
 
   // Menu items авах
   useEffect(() => {
@@ -124,7 +127,7 @@ export default function QRMenu() {
     if (cart.length === 0) return;
 
     const orderData = {
-      tableNumber: parseInt(tableNumber),
+      tableNumber: currentTable,
       items: cart.map((item) => ({
         menuItemId: item._id,
         name: getItemName(item),
@@ -146,6 +149,7 @@ export default function QRMenu() {
       const result = await response.json();
 
       if (result.success) {
+        console.log("Order placed successfully:", result.data);
         // Cart цэвэрлэх
         setCart([]);
 
@@ -228,7 +232,7 @@ export default function QRMenu() {
             <div className="flex items-center gap-1">
               <Clock className="w-4 h-4" />
               <span>
-                {t("table")} {tableNumber}
+                {t("table")} {currentTable}
               </span>
             </div>
             <div className="flex items-center gap-1">
@@ -383,5 +387,22 @@ export default function QRMenu() {
         </Tabs>
       </div>
     </div>
+  );
+}
+
+export default function QRMenu() {
+  return (
+    <Suspense
+      fallback={
+        <div className="min-h-screen bg-white flex items-center justify-center">
+          <div className="text-center">
+            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-purple-600 mx-auto mb-4"></div>
+            <p className="text-gray-600">Уншиж байна...</p>
+          </div>
+        </div>
+      }
+    >
+      <QRMenuContent />
+    </Suspense>
   );
 }
