@@ -1,14 +1,16 @@
 import { NextResponse } from "next/server";
-
-// Mock orders data
-let orders: any[] = [];
-let orderCounter = 1;
+import {
+  mockOrders,
+  orderCounter,
+  addOrder,
+  getAllOrders,
+} from "@/lib/mockData";
 
 export async function GET() {
   try {
     return NextResponse.json({
       success: true,
-      data: orders,
+      data: getAllOrders(),
       message: "Захиалгын жагсаалт амжилттай илгээгдлээ",
     });
   } catch (error) {
@@ -50,8 +52,7 @@ export async function POST(request: Request) {
       updatedAt: new Date().toISOString(),
     };
 
-    orders.push(newOrder);
-    orderCounter++;
+    addOrder(newOrder);
 
     return NextResponse.json({
       success: true,
