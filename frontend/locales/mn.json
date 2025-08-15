@@ -1,0 +1,177 @@
+{
+  "common": {
+    "loading": "Ачааллаж байна...",
+    "error": "Алдаа гарлаа",
+    "retry": "Дахин оролдох",
+    "cancel": "Цуцлах",
+    "confirm": "Батлах",
+    "save": "Хадгалах",
+    "edit": "Засах",
+    "delete": "Устгах",
+    "add": "Нэмэх",
+    "search": "Хайх",
+    "filter": "Шүүх",
+    "sort": "Эрэмбэлэх",
+    "reset": "Цэвэрлэх",
+    "submit": "Илгээх",
+    "close": "Хаах",
+    "back": "Буцах",
+    "next": "Дараах",
+    "previous": "Өмнөх",
+    "view": "Харах",
+    "download": "Татаж авах",
+    "share": "Хуваалцах"
+  },
+  "navigation": {
+    "home": "Нүүр",
+    "products": "Бүтээгдэхүүн",
+    "categories": "Ангилал",
+    "about": "Бидний тухай",
+    "contact": "Холбоо барих",
+    "admin": "Админ"
+  },
+  "header": {
+    "title": "MonoPharma",
+    "subtitle": "Монгол Фармацевтийн Шийдэл",
+    "searchPlaceholder": "Бүтээгдэхүүн хайх...",
+    "languageSwitch": "Хэл солих"
+  },
+  "footer": {
+    "copyright": "© 2024 MonoPharma. Бүх эрх хуулиар хамгаалагдсан.",
+    "poweredBy": "Next.js болон MongoDB-ээр бүтээгдсэн"
+  },
+  "home": {
+    "hero": {
+      "title": "MonoPharma",
+      "subtitle": "Монгол Фармацевтийн Орчин Үеийн Шийдэл",
+      "description": "100+ бүтээгдэхүүн, 3 хэлний дэмжлэг, emonos.mn холбоостой",
+      "cta": "Бүтээгдэхүүн үзэх"
+    },
+    "features": {
+      "title": "Онцлогууд",
+      "multilingual": {
+        "title": "3 хэлний дэмжлэг",
+        "description": "Монгол, Англи, Хятад хэл дээр"
+      },
+      "products": {
+        "title": "100+ бүтээгдэхүүн",
+        "description": "Фармацевтийн олон төрлийн бүтээгдэхүүн"
+      },
+      "emonos": {
+        "title": "emonos.mn холбоос",
+        "description": "Бүтээгдэхүүний дэлгэрэнгүй мэдээлэл"
+      },
+      "media": {
+        "title": "Видео болон 3D",
+        "description": "Интерактив харуулалт"
+      }
+    },
+    "featured": {
+      "title": "Онцлох бүтээгдэхүүн",
+      "viewAll": "Бүгдийг харах"
+    }
+  },
+  "products": {
+    "title": "Бүтээгдэхүүн",
+    "featured": "Онцлох",
+    "all": "Бүгд",
+    "noProducts": "Бүтээгдэхүүн олдсонгүй",
+    "loadMore": "Цааш ачааллах",
+    "filters": {
+      "category": "Ангилал",
+      "manufacturer": "Үйлдвэрлэгч",
+      "country": "Улс",
+      "prescription": "Жороор",
+      "form": "Хэлбэр"
+    },
+    "sort": {
+      "name": "Нэрээр",
+      "date": "Огноогоор",
+      "featured": "Онцлохоор"
+    },
+    "details": {
+      "sku": "SKU код",
+      "barcode": "Бар код",
+      "manufacturer": "Үйлдвэрлэгч",
+      "country": "Үйлдвэрлэсэн улс",
+      "activeIngredient": "Идэвхт найрлага",
+      "dosage": "Тун",
+      "form": "Хэлбэр",
+      "packaging": "Савлалт",
+      "prescription": "Жороор авах",
+      "prescriptionRequired": "Жор шаардлагатай",
+      "prescriptionNotRequired": "Жор шаардлагагүй",
+      "viewOnEmonos": "emonos.mn дээр харах",
+      "images": "Зургууд",
+      "videos": "Видео",
+      "models3d": "3D загвар"
+    }
+  },
+  "categories": {
+    "title": "Ангилал",
+    "all": "Бүх ангилал",
+    "noCategories": "Ангилал олдсонгүй",
+    "subcategories": "Дэд ангилал",
+    "productCount": "{{count}} бүтээгдэхүүн"
+  },
+  "search": {
+    "title": "Хайлтын үр дүн",
+    "query": "\"{{query}}\" хайлтын үр дүн",
+    "noResults": "Хайлтын үр дүн олдсонгүй",
+    "resultsCount": "{{count}} үр дүн олдлоо",
+    "placeholder": "Бүтээгдэхүүн, ангилал хайх..."
+  },
+  "pagination": {
+    "previous": "Өмнөх",
+    "next": "Дараах",
+    "page": "Хуудас {{current}} / {{total}}",
+    "showing": "{{start}}-{{end}} / {{total}} үр дүн"
+  },
+  "media": {
+    "image": "Зураг",
+    "video": "Видео",
+    "model3d": "3D загвар",
+    "alt": "{{name}} зураг",
+    "play": "Тоглуулах",
+    "pause": "Зогсоох",
+    "fullscreen": "Бүтэн дэлгэц",
+    "mute": "Дуугүй",
+    "unmute": "Дуутай",
+    "loading": "Ачааллаж байна...",
+    "error": "Медиа ачааллахад алдаа гарлаа"
+  },
+  "errors": {
+    "404": "Хуудас олдсонгүй",
+    "500": "Серверийн алдаа",
+    "networkError": "Сүлжээний алдаа",
+    "loadingFailed": "Ачааллахад алдаа гарлаа",
+    "tryAgain": "Дахин оролдоно уу"
+  },
+  "admin": {
+    "title": "Админ хэсэг",
+    "dashboard": "Хяналтын самбар",
+    "products": {
+      "title": "Бүтээгдэхүүн удирдлага",
+      "add": "Шинэ бүтээгдэхүүн нэмэх",
+      "edit": "Бүтээгдэхүүн засах",
+      "delete": "Бүтээгдэхүүн устгах",
+      "publish": "Нийтлэх",
+      "unpublish": "Нууцлах",
+      "feature": "Онцлох болгох",
+      "unfeature": "Онцлохоос хасах"
+    },
+    "categories": {
+      "title": "Ангилал удирдлага",
+      "add": "Шинэ ангилал нэмэх",
+      "edit": "Ангилал засах",
+      "delete": "Ангилал устгах"
+    },
+    "media": {
+      "title": "Медиа удирдлага",
+      "upload": "Файл оруулах",
+      "delete": "Файл устгах",
+      "maxSize": "Хамгийн их хэмжээ: {{size}}",
+      "supportedFormats": "Дэмжигдэх форматууд: {{formats}}"
+    }
+  }
+}
