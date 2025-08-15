@@ -1,0 +1,177 @@
+{
+  "common": {
+    "loading": "Loading...",
+    "error": "An error occurred",
+    "retry": "Try again",
+    "cancel": "Cancel",
+    "confirm": "Confirm",
+    "save": "Save",
+    "edit": "Edit",
+    "delete": "Delete",
+    "add": "Add",
+    "search": "Search",
+    "filter": "Filter",
+    "sort": "Sort",
+    "reset": "Reset",
+    "submit": "Submit",
+    "close": "Close",
+    "back": "Back",
+    "next": "Next",
+    "previous": "Previous",
+    "view": "View",
+    "download": "Download",
+    "share": "Share"
+  },
+  "navigation": {
+    "home": "Home",
+    "products": "Products",
+    "categories": "Categories",
+    "about": "About Us",
+    "contact": "Contact",
+    "admin": "Admin"
+  },
+  "header": {
+    "title": "MonoPharma",
+    "subtitle": "Mongolian Pharmaceutical Solutions",
+    "searchPlaceholder": "Search products...",
+    "languageSwitch": "Change Language"
+  },
+  "footer": {
+    "copyright": "© 2024 MonoPharma. All rights reserved.",
+    "poweredBy": "Built with Next.js and MongoDB"
+  },
+  "home": {
+    "hero": {
+      "title": "MonoPharma",
+      "subtitle": "Modern Mongolian Pharmaceutical Solutions",
+      "description": "100+ products, 3-language support, integrated with emonos.mn",
+      "cta": "View Products"
+    },
+    "features": {
+      "title": "Features",
+      "multilingual": {
+        "title": "3-Language Support",
+        "description": "Available in Mongolian, English, and Chinese"
+      },
+      "products": {
+        "title": "100+ Products",
+        "description": "Wide range of pharmaceutical products"
+      },
+      "emonos": {
+        "title": "emonos.mn Integration",
+        "description": "Detailed product information"
+      },
+      "media": {
+        "title": "Video & 3D",
+        "description": "Interactive visualizations"
+      }
+    },
+    "featured": {
+      "title": "Featured Products",
+      "viewAll": "View All"
+    }
+  },
+  "products": {
+    "title": "Products",
+    "featured": "Featured",
+    "all": "All",
+    "noProducts": "No products found",
+    "loadMore": "Load More",
+    "filters": {
+      "category": "Category",
+      "manufacturer": "Manufacturer",
+      "country": "Country",
+      "prescription": "Prescription",
+      "form": "Form"
+    },
+    "sort": {
+      "name": "By Name",
+      "date": "By Date",
+      "featured": "Featured"
+    },
+    "details": {
+      "sku": "SKU Code",
+      "barcode": "Barcode",
+      "manufacturer": "Manufacturer",
+      "country": "Country of Origin",
+      "activeIngredient": "Active Ingredient",
+      "dosage": "Dosage",
+      "form": "Form",
+      "packaging": "Packaging",
+      "prescription": "Prescription",
+      "prescriptionRequired": "Prescription Required",
+      "prescriptionNotRequired": "No Prescription Required",
+      "viewOnEmonos": "View on emonos.mn",
+      "images": "Images",
+      "videos": "Videos",
+      "models3d": "3D Models"
+    }
+  },
+  "categories": {
+    "title": "Categories",
+    "all": "All Categories",
+    "noCategories": "No categories found",
+    "subcategories": "Subcategories",
+    "productCount": "{{count}} products"
+  },
+  "search": {
+    "title": "Search Results",
+    "query": "Results for \"{{query}}\"",
+    "noResults": "No search results found",
+    "resultsCount": "{{count}} results found",
+    "placeholder": "Search products, categories..."
+  },
+  "pagination": {
+    "previous": "Previous",
+    "next": "Next",
+    "page": "Page {{current}} of {{total}}",
+    "showing": "Showing {{start}}-{{end}} of {{total}} results"
+  },
+  "media": {
+    "image": "Image",
+    "video": "Video",
+    "model3d": "3D Model",
+    "alt": "{{name}} image",
+    "play": "Play",
+    "pause": "Pause",
+    "fullscreen": "Fullscreen",
+    "mute": "Mute",
+    "unmute": "Unmute",
+    "loading": "Loading...",
+    "error": "Error loading media"
+  },
+  "errors": {
+    "404": "Page not found",
+    "500": "Server error",
+    "networkError": "Network error",
+    "loadingFailed": "Loading failed",
+    "tryAgain": "Please try again"
+  },
+  "admin": {
+    "title": "Admin Panel",
+    "dashboard": "Dashboard",
+    "products": {
+      "title": "Product Management",
+      "add": "Add New Product",
+      "edit": "Edit Product",
+      "delete": "Delete Product",
+      "publish": "Publish",
+      "unpublish": "Unpublish",
+      "feature": "Feature",
+      "unfeature": "Unfeature"
+    },
+    "categories": {
+      "title": "Category Management",
+      "add": "Add New Category",
+      "edit": "Edit Category",
+      "delete": "Delete Category"
+    },
+    "media": {
+      "title": "Media Management",
+      "upload": "Upload File",
+      "delete": "Delete File",
+      "maxSize": "Max size: {{size}}",
+      "supportedFormats": "Supported formats: {{formats}}"
+    }
+  }
+}

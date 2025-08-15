@@ -1,0 +1,177 @@
+{
+  "common": {
+    "loading": "加载中...",
+    "error": "发生错误",
+    "retry": "重试",
+    "cancel": "取消",
+    "confirm": "确认",
+    "save": "保存",
+    "edit": "编辑",
+    "delete": "删除",
+    "add": "添加",
+    "search": "搜索",
+    "filter": "筛选",
+    "sort": "排序",
+    "reset": "重置",
+    "submit": "提交",
+    "close": "关闭",
+    "back": "返回",
+    "next": "下一页",
+    "previous": "上一页",
+    "view": "查看",
+    "download": "下载",
+    "share": "分享"
+  },
+  "navigation": {
+    "home": "首页",
+    "products": "产品",
+    "categories": "分类",
+    "about": "关于我们",
+    "contact": "联系我们",
+    "admin": "管理"
+  },
+  "header": {
+    "title": "MonoPharma",
+    "subtitle": "蒙古制药解决方案",
+    "searchPlaceholder": "搜索产品...",
+    "languageSwitch": "更改语言"
+  },
+  "footer": {
+    "copyright": "© 2024 MonoPharma. 版权所有。",
+    "poweredBy": "由 Next.js 和 MongoDB 构建"
+  },
+  "home": {
+    "hero": {
+      "title": "MonoPharma",
+      "subtitle": "现代蒙古制药解决方案",
+      "description": "100多种产品，3种语言支持，与emonos.mn集成",
+      "cta": "查看产品"
+    },
+    "features": {
+      "title": "特色功能",
+      "multilingual": {
+        "title": "3种语言支持",
+        "description": "支持蒙古语、英语和中文"
+      },
+      "products": {
+        "title": "100多种产品",
+        "description": "广泛的制药产品系列"
+      },
+      "emonos": {
+        "title": "emonos.mn 集成",
+        "description": "详细的产品信息"
+      },
+      "media": {
+        "title": "视频和3D",
+        "description": "交互式可视化"
+      }
+    },
+    "featured": {
+      "title": "特色产品",
+      "viewAll": "查看全部"
+    }
+  },
+  "products": {
+    "title": "产品",
+    "featured": "特色",
+    "all": "全部",
+    "noProducts": "未找到产品",
+    "loadMore": "加载更多",
+    "filters": {
+      "category": "分类",
+      "manufacturer": "制造商",
+      "country": "国家",
+      "prescription": "处方",
+      "form": "形式"
+    },
+    "sort": {
+      "name": "按名称",
+      "date": "按日期",
+      "featured": "特色"
+    },
+    "details": {
+      "sku": "SKU代码",
+      "barcode": "条形码",
+      "manufacturer": "制造商",
+      "country": "原产国",
+      "activeIngredient": "活性成分",
+      "dosage": "剂量",
+      "form": "形式",
+      "packaging": "包装",
+      "prescription": "处方",
+      "prescriptionRequired": "需要处方",
+      "prescriptionNotRequired": "无需处方",
+      "viewOnEmonos": "在emonos.mn上查看",
+      "images": "图片",
+      "videos": "视频",
+      "models3d": "3D模型"
+    }
+  },
+  "categories": {
+    "title": "分类",
+    "all": "所有分类",
+    "noCategories": "未找到分类",
+    "subcategories": "子分类",
+    "productCount": "{{count}} 个产品"
+  },
+  "search": {
+    "title": "搜索结果",
+    "query": "\"{{query}}\" 的搜索结果",
+    "noResults": "未找到搜索结果",
+    "resultsCount": "找到 {{count}} 个结果",
+    "placeholder": "搜索产品、分类..."
+  },
+  "pagination": {
+    "previous": "上一页",
+    "next": "下一页",
+    "page": "第 {{current}} 页，共 {{total}} 页",
+    "showing": "显示 {{start}}-{{end}} 项，共 {{total}} 个结果"
+  },
+  "media": {
+    "image": "图片",
+    "video": "视频",
+    "model3d": "3D模型",
+    "alt": "{{name}} 图片",
+    "play": "播放",
+    "pause": "暂停",
+    "fullscreen": "全屏",
+    "mute": "静音",
+    "unmute": "取消静音",
+    "loading": "加载中...",
+    "error": "媒体加载错误"
+  },
+  "errors": {
+    "404": "页面未找到",
+    "500": "服务器错误",
+    "networkError": "网络错误",
+    "loadingFailed": "加载失败",
+    "tryAgain": "请重试"
+  },
+  "admin": {
+    "title": "管理面板",
+    "dashboard": "仪表板",
+    "products": {
+      "title": "产品管理",
+      "add": "添加新产品",
+      "edit": "编辑产品",
+      "delete": "删除产品",
+      "publish": "发布",
+      "unpublish": "取消发布",
+      "feature": "设为特色",
+      "unfeature": "取消特色"
+    },
+    "categories": {
+      "title": "分类管理",
+      "add": "添加新分类",
+      "edit": "编辑分类",
+      "delete": "删除分类"
+    },
+    "media": {
+      "title": "媒体管理",
+      "upload": "上传文件",
+      "delete": "删除文件",
+      "maxSize": "最大大小：{{size}}",
+      "supportedFormats": "支持的格式：{{formats}}"
+    }
+  }
+}

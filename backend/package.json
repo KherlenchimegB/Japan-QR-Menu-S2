@@ -1,7 +1,7 @@
 {
-  "name": "qr-menu-backend",
+  "name": "monopharma-backend",
   "version": "1.0.0",
-  "description": "Япон ресторанны QR menu backend API",
+  "description": "MonoPharma фармацевтийн компанийн backend API",
   "main": "dist/index.js",
   "scripts": {
     "dev": "nodemon src/index.ts",
@@ -38,12 +38,15 @@
     "typescript": "^5.3.0"
   },
   "keywords": [
-    "qr-menu",
-    "restaurant",
+    "monopharma",
+    "pharmaceutical",
     "api",
     "mongodb",
-    "express"
+    "express",
+    "multilingual",
+    "3d",
+    "video"
   ],
-  "author": "QR Menu Team",
+  "author": "MonoPharma Team",
   "license": "MIT"
 }
